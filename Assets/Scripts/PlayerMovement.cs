@@ -112,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
 			//Ground Check
 			if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer) && !IsJumping) //checks if set box overlaps with ground
 			{
-				LastOnGroundTime = Data.coyoteTime; //if so sets the lastGrounded to coyoteTime
+                LastOnGroundTime = Data.coyoteTime; //if so sets the lastGrounded to coyoteTime
             }		
 
 			//Right Wall Check
@@ -148,8 +148,11 @@ public class PlayerMovement : MonoBehaviour
         {
 			_isJumpCut = false;
 
-			if(!IsJumping)
+            if (!IsJumping)
+			{
 				_isJumpFalling = false;
+			}
+               
 		}
 
 		//Jump
@@ -332,10 +335,14 @@ public class PlayerMovement : MonoBehaviour
 		//This means we'll always feel like we jump the same amount 
 		//(setting the player's Y velocity to 0 beforehand will likely work the same, but I find this more elegant :D)
 		float force = Data.jumpForce;
-		if (RB.velocity.y < 0)
-			force -= RB.velocity.y;
 
-		RB.AddForce(Vector2.up * force, ForceMode2D.Impulse);
+		squashStretchAnimator.SetTrigger("Jump");
+
+		if (RB.velocity.y < 0)
+		{
+			force -= RB.velocity.y;
+		}
+        RB.AddForce(Vector2.up * force, ForceMode2D.Impulse);
 		#endregion
 	}
 
