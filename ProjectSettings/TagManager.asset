@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Trap
   layers:
   - Default
   - TransparentFX
@@ -12,7 +13,7 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
+  - Trap
   - 
   - 
   - 
@@ -40,4 +41,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 4231484363
+    locked: 0
+  - name: Midground
+    uniqueID: 2741705553
+    locked: 0
+  - name: Entity
+    uniqueID: 2898448391
+    locked: 0
+  - name: Foreground
+    uniqueID: 3161621173
     locked: 0

@@ -89,18 +89,18 @@ public class PlayerMovement : MonoBehaviour
 		#endregion
 
 		#region INPUT HANDLER
-		_moveInput.x = Input.GetAxisRaw("Horizontal");
-		_moveInput.y = Input.GetAxisRaw("Vertical");
+		_moveInput.x = SimpleInput.GetAxisRaw("Horizontal");
+		_moveInput.y = SimpleInput.GetAxisRaw("Vertical");
 
 		if (_moveInput.x != 0)
 			CheckDirectionToFace(_moveInput.x > 0);
 
-		if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.J))
+		if(SimpleInput.GetKeyDown(KeyCode.Space) || SimpleInput.GetKeyDown(KeyCode.C) || SimpleInput.GetKeyDown(KeyCode.J))
         {
 			OnJumpInput();
         }
 
-		if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.C) || Input.GetKeyUp(KeyCode.J))
+		if (SimpleInput.GetKeyUp(KeyCode.Space) || SimpleInput.GetKeyUp(KeyCode.C) || SimpleInput.GetKeyUp(KeyCode.J))
 		{
 			OnJumpUpInput();
 		}
