@@ -9,11 +9,13 @@ public class PlayerBehaviour : MonoBehaviour
     private GameManager gm;
 
     private SpriteRenderer sr;
+    private Rigidbody2D rb;
 
     private void Start()
     {
         gm = gameManager.GetComponent<GameManager>();
         sr = GetComponentInChildren<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -21,7 +23,17 @@ public class PlayerBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Trap"))
         {
             sr.enabled = false;
-            gm.PlayerDeath();
+            rb.simulated = false;
+            GameManager.instance.PlayerDeath();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Blox"))
+        {
+            collision.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            GameManager.instance.BloxCollected();
         }
     }
 }
